@@ -8,14 +8,10 @@
 
 <script>
     // import HelloWorld from './components/HelloWorld.vue'
-    import Movie from "@/components/Movie";
 
     export default {
         name: 'app',
         components: {
-            // eslint-disable-next-line vue/no-unused-components
-            Movie
-            // HelloWorld
         },
         data() {
             return {};

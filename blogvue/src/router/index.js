@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWord from '@/components/HelloWorld'
-import Movie from '@/components/Movie'
-import Movies from '@/components/Movies'
+import Values from '@/components/Values'
 
 Vue.use(Router);
 
@@ -15,15 +14,9 @@ export default new Router({
             component: HelloWord
         },
         {
-            path: '/movie',
+            path: '/values',
             name: '',
-            component: Movie,
-            hidden: true
-        },
-        {
-            path: '/movies',
-            name: '',
-            component: Movies,
+            component: Values,
             hidden: true
         }
     ]

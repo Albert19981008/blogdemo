@@ -33,7 +33,7 @@ axios.interceptors.response.use(data => {
     }
     // return Promise.resolve(err);
 });
-let base = '';
+let base = 'http://localhost:8679';
 export const postRequest = (url, params) => {
     return axios({
         method: 'post',
@@ -78,9 +78,12 @@ export const putRequest = (url, params) => {
         }
     });
 };
-export const deleteRequest = (url) => {
+export const deleteRequest = (url, params) => {
+    // eslint-disable-next-line no-console
+    console.log(params);
     return axios({
         method: 'delete',
+        params: params,
         url: `${base}${url}`
     });
 };
