@@ -1,4 +1,4 @@
-create DATABASE `blogdemo` default character set utf8;
+create database `blogdemo` default character set utf8;
 
 USE `blogdemo`;
 

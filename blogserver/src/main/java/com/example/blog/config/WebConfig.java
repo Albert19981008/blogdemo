@@ -5,7 +5,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-
+/**
+ * addCorsMappings 解决了跨域问题
+ * addResourceHandlers 设置了静态资源的映射
+ */
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
 
