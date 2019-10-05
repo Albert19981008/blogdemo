@@ -5,10 +5,6 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-new Vue({
-    render: h => h(App),
-    router,
-}).$mount('#app')
 
 import {getRequest} from "./util/api";
 import {postRequest} from "./util/api";
@@ -25,3 +21,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
+
+
+new Vue({
+    render: h => h(App),
+    router,
+}).$mount('#app')
