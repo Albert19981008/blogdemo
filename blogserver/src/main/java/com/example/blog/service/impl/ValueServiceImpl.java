@@ -20,19 +20,47 @@ public class ValueServiceImpl implements ValueService {
     }
 
     @Override
+    public Value getValueById(Integer id) {
+        return valueDao.getValueById(id);
+    }
+
+    @Override
     public int getMaxId() {
         return valueDao.getMaxId();
     }
 
     @Override
-    public void addValue(Value value) {
-        int maxId = valueDao.getMaxId();
-        value.setId(maxId + 1);
-        valueDao.addValue(value);
+    public boolean addValue(Value value) {
+        try {
+            int maxId = valueDao.getMaxId();
+            value.setId(maxId + 1);
+            valueDao.addValue(value);
+            return true;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public void deleteValue(int id) {
-        valueDao.deleteValue(id);
+    public boolean updateValue(Value value) {
+        try {
+            valueDao.updateValue(value);
+            return true;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteValue(Integer id) {
+        try {
+            valueDao.deleteValue(id);
+            return true;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return false;
+        }
     }
 }

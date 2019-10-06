@@ -1,33 +1,54 @@
 package com.example.blog.controller;
 
 import com.example.blog.bean.Value;
+import com.example.blog.common.ResultCode;
 import com.example.blog.service.ValueService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/value")
 public class ValueController {
 
     @Autowired
     private ValueService valueService;
 
-    @GetMapping("/values")
+    @GetMapping("/all")
     public List<Value> getAllValues() {
         return valueService.getAllValues();
     }
 
-    @PostMapping("/value/add")
-    public void addValue(Value value) {
-        valueService.addValue(value);
+    @GetMapping("/{id}")
+    public Value getValueById(@PathVariable Integer id) {
+        return valueService.getValueById(id);
     }
 
-    @DeleteMapping("/value/delete")
-    public void deleteValue(int id) {
-        valueService.deleteValue(id);
+    @PostMapping("/add")
+    public ResultCode addValue(Value value) {
+        if (valueService.addValue(value)) {
+            return ResultCode.SUCCESS;
+        } else {
+            return ResultCode.FAILED;
+        }
+    }
+
+    @PostMapping("/delete")
+    public ResultCode deleteValue(Integer id) {
+        if (valueService.deleteValue(id)) {
+            return ResultCode.SUCCESS;
+        } else {
+            return ResultCode.FAILED;
+        }
+    }
+
+    @PostMapping("/update")
+    public ResultCode updateValue(Value value) {
+        if (valueService.updateValue(value)) {
+            return ResultCode.SUCCESS;
+        } else {
+            return ResultCode.FAILED;
+        }
     }
 }

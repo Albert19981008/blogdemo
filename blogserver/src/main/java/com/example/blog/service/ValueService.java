@@ -8,9 +8,13 @@ public interface ValueService {
 
     List<Value> getAllValues();
 
+    Value getValueById(Integer id);
+
     int getMaxId();
 
-    void addValue(Value value);
+    boolean addValue(Value value);
 
-    void deleteValue(int id);
+    boolean updateValue(Value value);
+
+    boolean deleteValue(Integer id);
 }
