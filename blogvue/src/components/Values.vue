@@ -64,7 +64,7 @@
         methods: {
             loadValues() {
                 let _this = this;
-                this.getRequest("/values").then(resp => {
+                this.getRequest("/value/all").then(resp => {
                     if (resp && resp.status === 200) {
                         _this.values = resp.data;
                     }
@@ -73,7 +73,7 @@
             handleDelete(index) {
                 let _this = this;
                 let id1 = this.values[index].id;
-                this.deleteRequest("/value/delete", {"id": id1}).then(resp => {
+                this.postRequest("/value/delete", {"id": id1}).then(resp => {
                     if (resp && resp.status === 200) {
                         _this.loadValues();
                     }
