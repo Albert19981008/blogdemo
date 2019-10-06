@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <el-container>
         <el-table
                 ref="multipleTable"
                 :data="values"
@@ -47,7 +47,7 @@
                 </template>
             </el-table-column>
         </el-table>
-    </div>
+    </el-container>
 
 </template>
 
