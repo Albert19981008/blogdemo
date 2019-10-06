@@ -2,7 +2,10 @@ package com.example.blog.bean;
 
 import java.io.Serializable;
 
-
+/**
+ * 价值观 
+ * 实体类
+ */
 public class Value implements Serializable {
     private Integer id;
     private String name;

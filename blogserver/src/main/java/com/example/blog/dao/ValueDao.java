@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
+/**
+ * 处理价值观那张表的 dao
+ */
 @Mapper
 public interface ValueDao {
 
