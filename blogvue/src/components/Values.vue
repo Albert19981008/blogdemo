@@ -9,7 +9,7 @@
                     placeholder="请输入价值观说明"
                     v-model="newValue.explanation" style="width: 300px;">
             </el-input>
-            <el-button type="primary" size="medium" style="margin-left: 15px" @click="addValue">新增价值观</el-button>
+            <el-button type="info" size="medium" style="margin-left: 15px" @click="addValue">新增价值观</el-button>
         </el-header>
 
         <el-main class="with_shadow">
@@ -18,7 +18,7 @@
                     :data="values"
                     tooltip-effect="dark"
                     style="width: 100%;"
-                    max-height="390">
+                    max-height="410">
 
                 <el-table-column
                         prop="id"

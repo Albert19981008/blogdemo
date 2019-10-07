@@ -26,9 +26,9 @@
             </el-container>
         </el-container>
         <el-footer>
-            <div class="footer_title">我们的价值观</div>
+            <div class="footer_value_title">我们的价值观</div>
             <template v-for="(item,index) in values">
-                <span class="footer_values" :key="index">{{item.name}}</span>
+                <span class="footer_value_item" :key="index">{{item.name}}</span>
             </template>
         </el-footer>
     </el-container>
@@ -105,14 +105,14 @@
         text-align: center;
     }
 
-    .footer_title {
+    .footer_value_title {
         margin-right: 10px;
         color: #fff;
         font-size: 17px;
         display: inline;
     }
 
-    .footer_values {
+    .footer_value_item {
         margin-left: 10px;
         color: #fff;
         font-size: 15px;
