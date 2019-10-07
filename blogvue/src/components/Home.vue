@@ -27,7 +27,7 @@
         </el-container>
         <el-footer>
             <div class="footer_title">我们的价值观</div>
-            <template v-for="(item,index) in values" class="home_userinfoContainer">
+            <template v-for="(item,index) in values">
                 <span class="footer_values" :key="index">{{item.name}}</span>
             </template>
         </el-footer>
@@ -82,10 +82,10 @@
     .el-footer {
         background-color: #a52a2a;
         color: #333;
-        text-align: center;
+        text-align: left;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        /*justify-content: space-between;*/
     }
 
     .el-aside {
@@ -106,16 +106,16 @@
     }
 
     .footer_title {
-        margin-left: 2px;
+        margin-right: 10px;
         color: #fff;
-        font-size: 16px;
+        font-size: 17px;
         display: inline;
     }
 
     .footer_values {
-        margin-left: 2px;
+        margin-left: 10px;
         color: #fff;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .home_userinfo {

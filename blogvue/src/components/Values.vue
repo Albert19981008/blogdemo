@@ -1,6 +1,18 @@
 <template>
     <el-container>
-        <el-main>
+        <el-header style="margin-top: 25px; text-align: left">
+            <el-input
+                    placeholder="请输入价值观名称"
+                    v-model="newValue.name" style="width: 200px; margin-right: 15px">
+            </el-input>
+            <el-input
+                    placeholder="请输入价值观说明"
+                    v-model="newValue.explanation" style="width: 300px;">
+            </el-input>
+            <el-button type="primary" size="medium" style="margin-left: 15px" @click="addValue">新增价值观</el-button>
+        </el-header>
+
+        <el-main class="with_shadow">
             <el-table
                     ref="multipleTable"
                     :data="values"
@@ -44,23 +56,23 @@
                     </template>
                 </el-table-column>
             </el-table>
-
-            <el-dialog title="编辑价值观信息" :visible.sync="dialogFormVisible">
-                <el-form :model="form">
-                    <el-form-item label="请输入新名称:" :label-width="formLabelWidth">
-                        <el-input v-model="form.name" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="请输入新描述:" :label-width="formLabelWidth">
-                        <el-input v-model="form.explanation" autocomplete="off"></el-input>
-                    </el-form-item>
-                </el-form>
-                <div slot="footer" class="dialog-footer">
-                    <el-button @click="dialogFormVisible = false">取消</el-button>
-                    <el-button type="primary" @click="dialogFormVisible = false, doEdit()">确定
-                    </el-button>
-                </div>
-            </el-dialog>
         </el-main>
+
+        <el-dialog title="编辑价值观信息" :visible.sync="dialogFormVisible">
+            <el-form :model="form">
+                <el-form-item label="请输入新名称:" :label-width="formLabelWidth">
+                    <el-input v-model="form.name" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="请输入新描述:" :label-width="formLabelWidth">
+                    <el-input v-model="form.explanation" autocomplete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取消</el-button>
+                <el-button type="primary" @click="doEdit()">确定
+                </el-button>
+            </div>
+        </el-dialog>
     </el-container>
 
 </template>
@@ -77,7 +89,11 @@
                     name: '',
                     explanation: '',
                 },
-                formLabelWidth: '120px'
+                formLabelWidth: '120px',
+                newValue: {
+                    name: '',
+                    explanation: '',
+                }
             }
         },
         methods: {
@@ -105,11 +121,23 @@
                 this.dialogFormVisible = true;
             },
             doEdit() {
+                this.dialogFormVisible = false;
                 let _this = this;
                 this.postRequest("/value/update", {
                     id: this.form.id,
                     name: this.form.name,
                     explanation: this.form.explanation
+                }).then(resp => {
+                    if (resp && resp.status === 200) {
+                        _this.loadValues();
+                    }
+                });
+            },
+            addValue() {
+                let _this = this;
+                this.postRequest("/value/add", {
+                    name: this.newValue.name,
+                    explanation: this.newValue.explanation
                 }).then(resp => {
                     if (resp && resp.status === 200) {
                         _this.loadValues();
@@ -129,13 +157,13 @@
         width: 100%;
     }
 
-    .el-main {
+    .with_shadow {
         justify-content: flex-start;
         display: flex;
         flex-direction: column;
         padding-left: 15px;
         background-color: #ececec;
-        margin-top: 20px;
+        margin-top: 10px;
         padding-top: 20px;
     }
 </style>
