@@ -1,17 +1,19 @@
 <template>
-    <el-container>
+    <el-container class="home_container">
         <el-header>
             <div class="home_title">人民博客</div>
         </el-header>
         <el-container>
-            <el-aside width="300px">
-                <el-menu
-                        default-active="0"
-                        class="el-menu-vertical-demo" style="background-color: #ECECEC" router>
-                    <el-menu-item @click="pushRouter('/home/value')">
-                        <span slot="title">价值观管理</span>
-                    </el-menu-item>
-                </el-menu>
+            <el-aside width="220px">
+                <div>
+                    <el-menu
+                            default-active="0"
+                            class="el-menu-vertical-demo" style="background-color: #ececec" router>
+                        <el-menu-item @click="pushRouter('/home/value')">
+                            <span slot="title">价值观管理</span>
+                        </el-menu-item>
+                    </el-menu>
+                </div>
             </el-aside>
             <el-container>
                 <el-main>
@@ -24,7 +26,10 @@
             </el-container>
         </el-container>
         <el-footer>
-            <h3>好好好</h3>
+            <div class="footer_title">我们的价值观</div>
+            <template v-for="(item,index) in values" class="home_userinfoContainer">
+                <span class="footer_values" :key="index">{{item.name}}</span>
+            </template>
         </el-footer>
     </el-container>
 </template>
@@ -32,23 +37,26 @@
 <script>
     export default {
         name: "Home",
+        data() {
+            return {
+                values: []
+            }
+        },
         methods: {
+            loadValues() {
+                let _this = this;
+                this.getRequest("/value/all").then(resp => {
+                    if (resp && resp.status === 200) {
+                        _this.values = resp.data;
+                    }
+                })
+            },
             pushRouter(path) {
                 this.$router.push(path);
-            },
-            // 获取当前路由的子路由
-            routes() {
-                // var routes = {
-                //     children: this.$router.options.routes
-                // };
-                //
-                // var route = this.$route.matched;
-                //
-                // for (var i = 0; i < route.length - 1; i++) {
-                //     routes = routes.children.find((e) => (e.name === route[i].name));
-                // }
-                return this.$route.children
             }
+        },
+        mounted: function () {
+            this.loadValues();
         }
     }
 </script>
@@ -63,7 +71,16 @@
     }
 
     .el-header {
-        background-color: #20a0ff;
+        background-color: #a52a2a;
+        color: #333;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .el-footer {
+        background-color: #a52a2a;
         color: #333;
         text-align: center;
         display: flex;
@@ -85,6 +102,20 @@
         color: #fff;
         font-size: 22px;
         display: inline;
+        text-align: center;
+    }
+
+    .footer_title {
+        margin-left: 2px;
+        color: #fff;
+        font-size: 16px;
+        display: inline;
+    }
+
+    .footer_values {
+        margin-left: 2px;
+        color: #fff;
+        font-size: 14px;
     }
 
     .home_userinfo {

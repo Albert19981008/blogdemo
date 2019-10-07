@@ -1,52 +1,66 @@
 <template>
     <el-container>
-        <el-table
-                ref="multipleTable"
-                :data="values"
-                tooltip-effect="dark"
-                style="width: 100%;overflow-x: hidden; overflow-y: hidden;"
-                max-height="390"
-                @selection-change="handleSelectionChange" v-loading="loading">
+        <el-main>
+            <el-table
+                    ref="multipleTable"
+                    :data="values"
+                    tooltip-effect="dark"
+                    style="width: 100%;"
+                    max-height="390">
 
-            <el-table-column
-                    prop="id"
-                    label="序号"
-                    width="120"
-                    align="left">
-            </el-table-column>
+                <el-table-column
+                        prop="id"
+                        label="序号"
+                        width="80"
+                        align="left">
+                </el-table-column>
 
-            <el-table-column
-                    prop="name"
-                    label="价值观"
-                    width="120"
-                    align="left">
-            </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="价值观"
+                        width="120"
+                        align="left">
+                </el-table-column>
 
-            <el-table-column
-                    prop="explanation"
-                    label="描述"
-                    width="280"
-                    align="left">
-            </el-table-column>
+                <el-table-column
+                        prop="explanation"
+                        label="描述"
+                        align="left">
+                </el-table-column>
 
-            <el-table-column
-                    label="操作"
-                    align="left"
-                    v-if="showEdit || showDelete"
-                    width="200">
-                <template slot-scope="scope">
-                    <el-button
-                            size="mini"
-                            @click="handleEdit(scope.$index, scope.row)" v-if="showEdit">编辑
+                <el-table-column
+                        label="操作"
+                        align="left">
+                    <template slot-scope="scope">
+                        <el-button
+                                size="mini"
+                                @click="onEditClicked(scope.$index)">编辑
+                        </el-button>
+                        <el-button
+                                size="mini"
+                                type="danger"
+                                @click="handleDelete(scope.$index)">删除
+                        </el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+
+            <el-dialog title="编辑价值观信息" :visible.sync="dialogFormVisible">
+                <el-form :model="form">
+                    <el-form-item label="请输入新名称:" :label-width="formLabelWidth">
+                        <el-input v-model="form.name" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="请输入新描述:" :label-width="formLabelWidth">
+                        <el-input v-model="form.explanation" autocomplete="off"></el-input>
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click="dialogFormVisible = false">取消</el-button>
+                    <el-button type="primary" @click="dialogFormVisible = false, doEdit()">确定
                     </el-button>
-                    <el-button
-                            size="mini"
-                            type="danger"
-                            @click="handleDelete(scope.$index)" v-if="showDelete">删除
-                    </el-button>
-                </template>
-            </el-table-column>
-        </el-table>
+                </div>
+            </el-dialog>
+        </el-main>
     </el-container>
 
 </template>
@@ -57,8 +71,13 @@
         data() {
             return {
                 values: [],
-                showEdit: true,
-                showDelete: true
+                dialogFormVisible: false,
+                form: {
+                    id: 0,
+                    name: '',
+                    explanation: '',
+                },
+                formLabelWidth: '120px'
             }
         },
         methods: {
@@ -68,7 +87,7 @@
                     if (resp && resp.status === 200) {
                         _this.values = resp.data;
                     }
-                })
+                });
             },
             handleDelete(index) {
                 let _this = this;
@@ -78,6 +97,24 @@
                         _this.loadValues();
                     }
                 })
+            },
+            onEditClicked(index) {
+                this.form.id = this.values[index].id;
+                this.form.name = this.values[index].name;
+                this.form.explanation = this.values[index].explanation;
+                this.dialogFormVisible = true;
+            },
+            doEdit() {
+                let _this = this;
+                this.postRequest("/value/update", {
+                    id: this.form.id,
+                    name: this.form.name,
+                    explanation: this.form.explanation
+                }).then(resp => {
+                    if (resp && resp.status === 200) {
+                        _this.loadValues();
+                    }
+                });
             }
         },
         mounted: function () {
@@ -90,5 +127,15 @@
     div {
         text-align: center;
         width: 100%;
+    }
+
+    .el-main {
+        justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
+        padding-left: 15px;
+        background-color: #ececec;
+        margin-top: 20px;
+        padding-top: 20px;
     }
 </style>
