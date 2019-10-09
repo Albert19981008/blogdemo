@@ -1,5 +1,5 @@
 <template>
-    <el-container class="home_container">
+    <el-container class="root_container">
         <el-header>
             <div class="home_title">人民博客</div>
         </el-header>
@@ -19,7 +19,7 @@
                 <el-main>
                     <el-breadcrumb separator-class="el-icon-arrow-right">
                         <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-                        <el-breadcrumb-item v-text="this.$router.currentRoute.name"></el-breadcrumb-item>
+                        <el-breadcrumb-item >{{this.$router.currentRoute.name}}</el-breadcrumb-item>
                     </el-breadcrumb>
                     <router-view></router-view>
                 </el-main>
@@ -62,11 +62,11 @@
 </script>
 
 <style scoped>
-    .home_container {
+    .root_container {
         height: 100%;
         position: absolute;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         width: 100%;
     }
 

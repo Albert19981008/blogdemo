@@ -18,3 +18,20 @@ values (2, '务实敢为', 'Be grounded & courageous');
 
 insert into `value_table`(`id`, `name`, `explanation`)
 values (3, '始终创业', 'Always Day 1');
+
+
+drop table if exists `topic`;
+create table `topic`
+(
+    `id`   int primary key,
+    `name` text default null
+);
+
+insert into `topic`(`id`, `name`)
+values (1, 'Java后端');
+
+insert into `topic`(`id`, `name`)
+values (2, 'docker');
+
+insert into `topic`(`id`, `name`)
+values (3, 'git');

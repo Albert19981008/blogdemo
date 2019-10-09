@@ -24,7 +24,7 @@ public interface ValueDao {
     void addValue(Value value);
 
     @Delete("delete from value_table where id = #{id}")
-    void deleteValue(int id);
+    void deleteValue(Integer id);
 
     @Update("update value_table set name = #{name}, explanation = #{explanation} where id = #{id}")
     void updateValue(Value value);
