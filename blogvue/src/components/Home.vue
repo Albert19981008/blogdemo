@@ -13,6 +13,14 @@
                             <span slot="title">价值观管理</span>
                         </el-menu-item>
                     </el-menu>
+
+                    <el-menu
+                            default-active="0"
+                            class="el-menu-vertical-demo" style="background-color: #ececec" router>
+                        <el-menu-item @click="pushRouter('/home/topic')">
+                            <span slot="title">话题管理</span>
+                        </el-menu-item>
+                    </el-menu>
                 </div>
             </el-aside>
             <el-container>
