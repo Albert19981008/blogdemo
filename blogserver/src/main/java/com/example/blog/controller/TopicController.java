@@ -2,7 +2,6 @@ package com.example.blog.controller;
 
 
 import com.example.blog.bean.Topic;
-import com.example.blog.bean.Value;
 import com.example.blog.common.ResultCode;
 import com.example.blog.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;

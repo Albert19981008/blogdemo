@@ -79,7 +79,7 @@
 
 <script>
     export default {
-        name: "Values",
+        name: "Value",
         data() {
             return {
                 values: [],
