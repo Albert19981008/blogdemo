@@ -25,5 +25,5 @@ public interface TopicDao {
     void deleteTopic(Integer id);
 
     @Update("update topic set name = #{name} where id = #{id}")
-    void updateValue(Topic topic);
+    void updateTopic(Topic topic);
 }
