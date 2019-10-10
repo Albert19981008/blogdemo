@@ -3,11 +3,18 @@ import Router from 'vue-router'
 import Value from '@/components/Value'
 import Home from '@/components/Home'
 import Topic from '@/components/Topic'
+import Login from '@/components/Login'
 
 Vue.use(Router);
 
 export default new Router({
     routes: [
+        {
+            path: '/login',
+            name: '',
+            component: Login,
+            hidden: true,
+        },
         {
             path: '/home',
             name: '',

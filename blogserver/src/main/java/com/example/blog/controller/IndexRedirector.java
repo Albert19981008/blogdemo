@@ -14,4 +14,9 @@ public class IndexRedirector {
 //        return "forward:index.html";  这个是网址栏不换为新URL的版本
         return "redirect:index.html";
     }
+
+//    @RequestMapping(value = "/login")
+//    public String login() {
+//        return "redirect:index.html/login";
+//    }
 }

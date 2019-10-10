@@ -35,3 +35,15 @@ values (2, 'docker');
 
 insert into `topic`(`id`, `name`)
 values (3, 'git');
+
+
+drop table if exists `user`;
+create table `user`
+(
+    `id`       int primary key,
+    `username` text default null,
+    `password` text default null
+);
+
+insert into `user`(`id`, `username`, `password`)
+values (1, 'root', '63a9f0ea7bb98050796b649e85481845');

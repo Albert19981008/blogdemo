@@ -30,7 +30,6 @@
                 <el-table-column
                         prop="name"
                         label="价值观"
-                        width="120"
                         align="left">
                 </el-table-column>
 

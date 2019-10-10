@@ -25,8 +25,7 @@
 
                 <el-table-column
                         prop="name"
-                        label="价值观"
-                        width="120"
+                        label="话题"
                         align="left">
                 </el-table-column>
 
