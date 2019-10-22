@@ -8,7 +8,7 @@
                 <div>
                     <el-menu
                             default-active="0"
-                            class="el-menu-vertical-demo" style="background-color: #ececec" router>
+                            class="el-menu-vertical-demo" style="background-color: #ececec; margin-top: 5px" router>
                         <el-menu-item @click="pushRouter('/home/value')">
                             <span slot="title">价值观管理</span>
                         </el-menu-item>
@@ -27,7 +27,7 @@
                 <el-main>
                     <el-breadcrumb separator-class="el-icon-arrow-right">
                         <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-                        <el-breadcrumb-item >{{this.$router.currentRoute.name}}</el-breadcrumb-item>
+                        <el-breadcrumb-item>{{this.$router.currentRoute.name}}</el-breadcrumb-item>
                     </el-breadcrumb>
                     <router-view></router-view>
                 </el-main>
@@ -79,22 +79,44 @@
     }
 
     .el-header {
-        background-color: #a52a2a;
+        /*background-color: #a52a2a;*/
         color: #333;
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        background: linear-gradient(-113deg, #c543d8, #925cc3);
+        position: relative;
+        box-shadow: 0 4px 4px rgba(3, 3, 3, 0.1),
+        0 0 20px rgba(0, 0, 0, 0.1) inset;
     }
 
     .el-footer {
-        background-color: #a52a2a;
+        /*background-color: #a52a2a;*/
         color: #333;
         text-align: left;
         display: flex;
         align-items: center;
-        /*justify-content: space-between;*/
+        background: linear-gradient(-113deg, #925cc3, #c543d8);
+        position: relative;
     }
+
+    .shadow {
+        box-shadow: 0 -4px 4px rgba(3, 3, 3, 0.1),
+        0 0 20px rgba(0, 0, 0, 0.1) inset;
+    }
+
+    .shadow::before,
+    .shadow::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        bottom: 15px;
+        left: 10px;
+        width: 50%;
+        height: 20%;
+    }
+
 
     .el-aside {
         background-color: #ECECEC;
