@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+// eslint-disable-next-line no-unused-vars
 import axios from 'axios'
+import '../theme/index.css'
 
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 
 import {getRequest} from "./util/api";
@@ -67,4 +69,4 @@ router.beforeEach((to, from, next) => {
 new Vue({
     render: h => h(App),
     router,
-}).$mount('#app')
+}).$mount('#app');
