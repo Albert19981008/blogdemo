@@ -17,6 +17,10 @@
                             <span slot="title">文章浏览</span>
                         </el-menu-item>
 
+                        <el-menu-item @click="pushRouter('/home/article_write')">
+                            <span slot="title"> 新增文章 </span>
+                        </el-menu-item>
+
                         <el-menu-item @click="pushRouter('/home/value')" v-if="if_is_root">
                             <span slot="title">价值观管理</span>
                         </el-menu-item>

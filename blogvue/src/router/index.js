@@ -7,6 +7,7 @@ import Login from '@/components/Login'
 import ArticleManagement from '@/components/ArticleManagement'
 import ArticleSearch from '@/components/ArticleSearch'
 import ArticleDetail from '@/components/ArticleDetail'
+import ArticleWrite from '@/components/ArticleWrite'
 
 Vue.use(Router);
 
@@ -60,6 +61,14 @@ export default new Router({
                     path: 'article_detail',
                     name: '文章详情',
                     component: ArticleDetail,
+                    meta: {
+                        keepAlive: true
+                    }
+                },
+                {
+                    path: 'article_write',
+                    name: '新增文章',
+                    component: ArticleWrite,
                     meta: {
                         keepAlive: true
                     }

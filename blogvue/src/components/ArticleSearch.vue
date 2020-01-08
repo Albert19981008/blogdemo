@@ -91,7 +91,7 @@
                 });
             },
             addArticle() {
-
+                this.$router.push({path: '/home/article_write'});
             }
         },
         mounted: function () {

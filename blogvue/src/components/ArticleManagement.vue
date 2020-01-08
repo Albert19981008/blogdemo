@@ -24,9 +24,12 @@
                 </el-table-column>
 
                 <el-table-column
-                        prop="title"
-                        label="文章标题"
-                        align="left">
+                        label="标题"
+                        width="400" align="left">
+                    <template slot-scope="scope">
+                        <span style="color: #409eff;cursor: pointer"
+                              @click="article_Click(scope.row)">{{ scope.row.title}}</span>
+                    </template>
                 </el-table-column>
 
                 <el-table-column
@@ -71,6 +74,9 @@
             }
         },
         methods: {
+            article_Click(row) {
+                this.$router.push({path: '/home/article_detail', query: {aid: row.articleId}})
+            },
             loadArticles() {
                 let _this = this;
                 this.getRequest("/article/all").then(resp => {
@@ -97,9 +103,8 @@
                     }
                 })
             },
-
             addArticle() {
-
+                this.$router.push({path: '/home/article_write'});
             }
         },
         mounted: function () {
