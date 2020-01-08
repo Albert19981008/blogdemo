@@ -41,29 +41,25 @@
                         align="left">
                 </el-table-column>
 
-                <el-table-column
-                        label="操作"
-                        align="left">
-                    <template slot-scope="scope">
-                        <el-button
-                                size="mini"
-                                type="danger"
-                                @click="handleDelete(scope.$index)">删除
-                        </el-button>
-                    </template>
-                </el-table-column>
             </el-table>
         </el-main>
+
     </el-container>
 
 </template>
 
 <script>
     export default {
-        name: "ArticleManagement",
+        name: "ArticleSearch",
         data() {
             return {
                 articles: [],
+                dialogFormVisible: false,
+                form: {
+                    id: 0,
+                    name: '',
+                    explanation: '',
+                },
                 articleToSearch: {
                     title: ''
                 },
@@ -88,16 +84,6 @@
                     }
                 });
             },
-            handleDelete(index) {
-                let _this = this;
-                let id1 = this.articles[index].articleId;
-                this.postRequest("/article/delete", {"id": id1}).then(resp => {
-                    if (resp && resp.status === 200) {
-                        _this.loadArticles();
-                    }
-                })
-            },
-
             addArticle() {
 
             }

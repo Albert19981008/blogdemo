@@ -13,6 +13,10 @@
                             default-active="0"
                             class="el-menu-vertical-demo" style="background-color: #ececec; margin-top: 5px" router>
 
+                        <el-menu-item @click="pushRouter('/home/article_search')">
+                            <span slot="title">文章浏览</span>
+                        </el-menu-item>
+
                         <el-menu-item @click="pushRouter('/home/value')" v-if="if_is_root">
                             <span slot="title">价值观管理</span>
                         </el-menu-item>

@@ -5,6 +5,7 @@ import Home from '@/components/Home'
 import Topic from '@/components/Topic'
 import Login from '@/components/Login'
 import ArticleManagement from '@/components/ArticleManagement'
+import ArticleSearch from '@/components/ArticleSearch'
 
 Vue.use(Router);
 
@@ -42,6 +43,14 @@ export default new Router({
                     path: 'article_management',
                     name: '文章管理',
                     component: ArticleManagement,
+                    meta: {
+                        keepAlive: true
+                    }
+                },
+                {
+                    path: 'article_search',
+                    name: '文章浏览',
+                    component: ArticleSearch,
                     meta: {
                         keepAlive: true
                     }
