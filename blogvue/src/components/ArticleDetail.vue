@@ -7,10 +7,10 @@
         </el-col>
         <el-col :span="24">
             <div>
-                <div><h3 style="margin-top: 0px;margin-bottom: 0px">用户 {{article.title}}</h3></div>
+                <div><h3 style="margin-top: 0px;margin-bottom: 0px">{{article.title}}</h3></div>
                 <div style="width: 100%;margin-top: 5px;display: flex;justify-content: flex-end;align-items: center">
                     <div style="display: inline; color: #20a0ff;margin-left: 50px;margin-right:20px;font-size: 12px;">
-                        {{article.userName}}
+                        用户 {{article.userName}}
                     </div>
                     <span style="color: #20a0ff;margin-right:20px;font-size: 12px;">话题 {{article.topicName }}</span>
                     <span style="margin:0px 50px 0px 0px"></span>

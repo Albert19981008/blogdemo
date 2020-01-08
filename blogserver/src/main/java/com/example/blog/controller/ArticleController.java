@@ -23,8 +23,6 @@ public class ArticleController {
     @GetMapping("/id/{id}")
     public Article getArticleById(@PathVariable Integer id) {
         if (id != null) {
-            System.out.println(id);
-            System.out.println(articleService.getArticleById(id).getArticleText());
             return articleService.getArticleById(id);
         }
         return null;
