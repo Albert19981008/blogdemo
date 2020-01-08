@@ -43,8 +43,9 @@ create table `user`
 (
     `id`       int primary key,
     `username` text default null,
-    `password` text default null
+    `password` text default null,
+    `role`     text default null
 );
 
-insert into `user`(`id`, `username`, `password`)
-values (1, 'root', '63a9f0ea7bb98050796b649e85481845');
+insert into `user`(`id`, `username`, `password`, `role`)
+values (1, 'root', '63a9f0ea7bb98050796b649e85481845', 'root');
