@@ -22,7 +22,6 @@ public class ArticleController {
 
     @GetMapping("/search/name/{name}")
     public List<Article> searchArticles(@PathVariable String name) {
-        System.out.println(name);
         return articleService.searchArticleByName(name);
     }
 

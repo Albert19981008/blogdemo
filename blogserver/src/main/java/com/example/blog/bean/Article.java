@@ -1,11 +1,13 @@
 package com.example.blog.bean;
 
+import java.io.Serializable;
+
 /**
  * 文章实体类
  *
  * @author lixinyang
  */
-public class Article {
+public class Article implements Serializable {
 
     private Integer articleId;
     private Integer userId;
