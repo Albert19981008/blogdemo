@@ -12,6 +12,9 @@ public interface UserDao {
     @Select("select * from user where username = #{username}")
     User loadUserByUsername(String username);
 
+    @Select("select * from user where id = #{id}")
+    User getUserById(int id);
+
     @Select("select max(id) from user")
     int getMaxId();
 

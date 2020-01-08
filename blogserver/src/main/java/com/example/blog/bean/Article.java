@@ -12,6 +12,8 @@ public class Article {
     private Integer topicId;
     private String title;
     private String articleText;
+    private String userName;
+    private String topicName;
 
     public Integer getUserId() {
         return userId;
@@ -51,5 +53,21 @@ public class Article {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
     }
 }
