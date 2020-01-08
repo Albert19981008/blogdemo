@@ -31,7 +31,7 @@ public class ArticleServiceImpl implements ArticleService {
             Topic topic = topicDao.getTopicById(article.getTopicId());
             User user = userDao.getUserById(article.getUserId());
             article.setTopicName(topic.getName());
-            article.setUserName(user.getUsername());
+//            article.setUserName(user.getUsername());
         }
         return articles;
     }
@@ -42,7 +42,7 @@ public class ArticleServiceImpl implements ArticleService {
         Topic topic = topicDao.getTopicById(article.getTopicId());
         User user = userDao.getUserById(article.getUserId());
         article.setTopicName(topic.getName());
-        article.setUserName(user.getUsername());
+//        article.setUserName(user.getUsername());
         return article;
     }
 
@@ -50,9 +50,11 @@ public class ArticleServiceImpl implements ArticleService {
     public boolean addArticle(Article article) {
         try {
             int id = articleDao.getMaxId() + 1;
-            if (article.getUserId() < 0 || topicDao.getTopicByName(article.getTopicName()) == null) {
-                return false;
-            }
+//            if (article.getUserId() < 0 || topicDao.getTopicByName(article.getTopicName()) == null) {
+//                System.out.println("sss");
+//                return false;
+//            }
+//            System.out.println("sss2");
             article.setArticleId(id);
             int topicId = topicDao.getTopicByName(article.getTopicName()).getId();
             article.setTopicId(topicId);
@@ -83,7 +85,7 @@ public class ArticleServiceImpl implements ArticleService {
             Topic topic = topicDao.getTopicById(article1.getTopicId());
             User user = userDao.getUserById(article1.getUserId());
             article1.setTopicName(topic.getName());
-            article1.setUserName(user.getUsername());
+//            article1.setUserName(user.getUsername());
         }
         return articles;
     }
