@@ -37,6 +37,16 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public Article getArticleById(int id) {
+        Article article =  articleDao.getArticleById(id);
+        Topic topic = topicDao.getTopicById(article.getTopicId());
+        User user = userDao.getUserById(article.getUserId());
+        article.setTopicName(topic.getName());
+        article.setUserName(user.getUsername());
+        return article;
+    }
+
+    @Override
     public boolean addArticle(Article article) {
         try {
             int id = articleDao.getMaxId() + 1;

@@ -20,6 +20,16 @@ public class ArticleController {
         return articleService.getAllArticle();
     }
 
+    @GetMapping("/id/{id}")
+    public Article getArticleById(@PathVariable Integer id) {
+        if (id != null) {
+            System.out.println(id);
+            System.out.println(articleService.getArticleById(id).getArticleText());
+            return articleService.getArticleById(id);
+        }
+        return null;
+    }
+
     @GetMapping("/search/name/{name}")
     public List<Article> searchArticles(@PathVariable String name) {
         return articleService.searchArticleByName(name);

@@ -11,6 +11,9 @@ public interface ArticleDao {
     @Select("select * from article")
     List<Article> getAllArticles();
 
+    @Select("select * from article where article_id = #{id}")
+    Article getArticleById(@Param("id") int id);
+
     @Select("select * from article where title like '%${name}%'")
     List<Article> searchArticleByName(@Param("name") String name);
 

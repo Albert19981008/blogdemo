@@ -8,6 +8,8 @@ public interface ArticleService {
 
     List<Article> getAllArticle();
 
+    Article getArticleById(int id);
+
     boolean addArticle(Article article);
 
     boolean deleteArticle(Integer id);
