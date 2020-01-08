@@ -1,7 +1,7 @@
 <template>
     <el-form :rules="rules" class="login-container" label-position="left" :model="loginForm"
              label-width="0px" v-loading="loading">
-        <h3 class="login_title">系统登录</h3>
+        <h3 class="login_title">系统登录（注册）</h3>
         <el-form-item prop="username">
             <el-input type="text" v-model="loginForm.username"
                       auto-complete="off" placeholder="账号"></el-input>
@@ -14,7 +14,10 @@
                      label-position="left">记住密码
         </el-checkbox>
         <el-form-item style="width: 100%">
-            <el-button type="primary" style="width: 100%" @click="submitClick">登录</el-button>
+            <el-button type="primary" style="width: 100%" @click="submitLogin">登录</el-button>
+        </el-form-item>
+        <el-form-item style="width: 100%">
+            <el-button type="primary" style="width: 100%" @click="submitSignUp">注册</el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -37,9 +40,10 @@
             }
         },
         methods: {
-            submitClick: function () {
+            submitLogin: function () {
                 let _this = this;
                 this.loading = true;
+                _this.$store.commit('logout');
                 this.postRequest('/login', {
                     username: this.loginForm.username,
                     password: this.loginForm.password
@@ -48,12 +52,33 @@
                     const json = resp.data;
                     window.console.log(json);
                     if (resp.status === 200) {
-                        //成功
-                        // eslint-disable-next-line no-unused-vars
                         _this.$router.replace({path: '/home'});
+                        _this.$store.commit('login', json.obj);
                     } else {
                         //失败
                         _this.$alert('登录失败!', '失败!');
+                    }
+                    // eslint-disable-next-line no-unused-vars
+                }, resp=> {
+                    _this.loading = false;
+                    _this.$alert('找不到服务器⊙﹏⊙∥!', '失败!');
+                });
+            },
+            submitSignUp: function () {
+                let _this = this;
+                this.loading = true;
+                this.postRequest('/signup', {
+                    username: this.loginForm.username,
+                    password: this.loginForm.password
+                }).then(resp=> {
+                    _this.loading = false;
+                    const json = resp.data;
+                    window.console.log(json);
+                    if (resp.status === 200) {
+                        _this.$alert('注册成功!', '成功!');
+                    } else {
+                        //失败
+                        _this.$alert('注册失败!', '失败!');
                     }
                     // eslint-disable-next-line no-unused-vars
                 }, resp=> {

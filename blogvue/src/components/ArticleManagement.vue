@@ -5,7 +5,7 @@
                     placeholder="请输入要搜索的文章名称"
                     v-model="articleToSearch.title" style="width: 350px; margin-right: 15px">
             </el-input>
-            <el-button type="info" size="medium" style="margin-left: 15px" @click="searchArticle">搜索文章</el-button>
+            <el-button type="primary" size="medium" style="margin-left: 15px" @click="searchArticle">搜索文章</el-button>
             <el-button type="info" size="medium" style="margin-left: 15px" @click="addArticle">新增文章</el-button>
         </el-header>
 

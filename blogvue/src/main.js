@@ -4,6 +4,7 @@ import router from './router'
 // eslint-disable-next-line no-unused-vars
 import axios from 'axios'
 import '../theme/index.css'
+import store from './store'
 
 
 Vue.config.productionTip = false;
@@ -69,4 +70,5 @@ router.beforeEach((to, from, next) => {
 new Vue({
     render: h => h(App),
     router,
+    store
 }).$mount('#app');
