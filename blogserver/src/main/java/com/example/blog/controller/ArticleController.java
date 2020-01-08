@@ -4,10 +4,7 @@ import com.example.blog.bean.Article;
 import com.example.blog.common.ResultCode;
 import com.example.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,8 +20,9 @@ public class ArticleController {
         return articleService.getAllArticle();
     }
 
-    @GetMapping("/search/name")
-    public List<Article> searchArticles(String name) {
+    @GetMapping("/search/name/{name}")
+    public List<Article> searchArticles(@PathVariable String name) {
+        System.out.println(name);
         return articleService.searchArticleByName(name);
     }
 

@@ -36,7 +36,6 @@ public class RespBean {
     }
 
     public Integer getStatus() {
-
         return status;
     }
 

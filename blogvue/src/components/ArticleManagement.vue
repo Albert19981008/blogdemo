@@ -3,7 +3,7 @@
         <el-header style="margin-top: 25px; text-align: left">
             <el-input
                     placeholder="请输入要搜索的文章名称"
-                    v-model="articleToSearch.name" style="width: 350px; margin-right: 15px">
+                    v-model="articleToSearch.title" style="width: 350px; margin-right: 15px">
             </el-input>
             <el-button type="info" size="medium" style="margin-left: 15px" @click="searchArticle">搜索文章</el-button>
             <el-button type="info" size="medium" style="margin-left: 15px" @click="addArticle">新增文章</el-button>
@@ -103,10 +103,10 @@
             },
             searchArticle() {
                 let _this = this;
-                let usr_base = '/search/name';
-                this.getRequest(usr_base + '?name=' + this.articleToSearch.title).then(resp => {
+                let url_base = '/article/search/name/';
+                this.getRequest(url_base + this.articleToSearch.title).then(resp => {
                     if (resp && resp.status === 200) {
-                        _this.loadArticles();
+                        _this.articles = resp.data;
                     }
                 });
             },

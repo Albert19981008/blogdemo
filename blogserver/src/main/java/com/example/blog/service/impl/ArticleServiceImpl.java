@@ -62,6 +62,13 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> searchArticleByName(String name) {
-        return articleDao.searchArticleByName(name);
+        List<Article> articles = articleDao.searchArticleByName(name);
+        for (Article article1 : articles) {
+            Topic topic = topicDao.getTopicById(article1.getTopicId());
+            User user = userDao.getUserById(article1.getUserId());
+            article1.setTopicName(topic.getName());
+            article1.setUserName(user.getUsername());
+        }
+        return articles;
     }
 }
