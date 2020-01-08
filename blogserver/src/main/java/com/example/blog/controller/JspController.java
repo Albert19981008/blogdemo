@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @Controller
 public class JspController {
@@ -17,6 +20,10 @@ public class JspController {
 
     @GetMapping("about_us")
     public String about(Model model) {
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateNowStr = sdf.format(d);
+        model.addAttribute("time1", dateNowStr);
         return "about";
     }
 
