@@ -4,6 +4,7 @@ import Value from '@/components/Value'
 import Home from '@/components/Home'
 import Topic from '@/components/Topic'
 import Login from '@/components/Login'
+import ArticleManagement from '@/components/ArticleManagement'
 
 Vue.use(Router);
 
@@ -33,6 +34,14 @@ export default new Router({
                     path: 'topic',
                     name: '话题管理',
                     component: Topic,
+                    meta: {
+                        keepAlive: true
+                    }
+                },
+                {
+                    path: 'article_management',
+                    name: '文章管理',
+                    component: ArticleManagement,
                     meta: {
                         keepAlive: true
                     }
