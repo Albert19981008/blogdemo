@@ -49,3 +49,16 @@ create table `user`
 
 insert into `user`(`id`, `username`, `password`, `role`)
 values (1, 'root', '63a9f0ea7bb98050796b649e85481845', 'root');
+
+
+drop table if exists `article`;
+create table `article`
+(
+    `article_id` int primary key,
+    `user_id` int,
+    `topic_id` int,
+    `article_text` text
+);
+
+insert into `article`
+values (1, 1, 2, 'test_article');
