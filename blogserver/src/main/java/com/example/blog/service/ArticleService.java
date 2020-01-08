@@ -11,4 +11,6 @@ public interface ArticleService {
     boolean addArticle(Article article);
 
     boolean deleteArticle(Integer id);
+
+    List<Article> searchArticleByName(String name);
 }

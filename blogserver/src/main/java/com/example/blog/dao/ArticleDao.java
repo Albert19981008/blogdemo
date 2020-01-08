@@ -11,6 +11,9 @@ public interface ArticleDao {
     @Select("select * from article")
     List<Article> getAllArticles();
 
+    @Select("select * from article where title like '%${name}%'")
+    List<Article> searchArticleByName(@Param("name") String name);
+
     @Insert("insert into article values (#{articleId}, #{userId}, #{topicId}, #{title}, #{articleText})")
     void addArticle(Article article);
 

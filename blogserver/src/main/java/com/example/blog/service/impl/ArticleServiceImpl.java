@@ -59,4 +59,9 @@ public class ArticleServiceImpl implements ArticleService {
             return false;
         }
     }
+
+    @Override
+    public List<Article> searchArticleByName(String name) {
+        return articleDao.searchArticleByName(name);
+    }
 }

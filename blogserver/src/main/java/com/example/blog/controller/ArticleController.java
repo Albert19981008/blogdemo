@@ -23,6 +23,11 @@ public class ArticleController {
         return articleService.getAllArticle();
     }
 
+    @GetMapping("/search/name")
+    public List<Article> searchArticles(String name) {
+        return articleService.searchArticleByName(name);
+    }
+
     @PostMapping("/add")
     public ResultCode addArticle(Article article) {
         if (articleService.addArticle(article)) {

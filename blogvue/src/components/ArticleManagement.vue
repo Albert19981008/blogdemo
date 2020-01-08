@@ -15,12 +15,11 @@
                     :data="articles"
                     tooltip-effect="dark"
                     style="width: 100%;"
-                    max-height="410">
+                    max-height="520">
 
                 <el-table-column
                         prop="articleId"
                         label="文章序号"
-                        width="80"
                         align="left">
                 </el-table-column>
 
@@ -91,10 +90,6 @@
                     title: ''
                 },
                 formLabelWidth: '120px',
-                newValue: {
-                    name: '',
-                    explanation: '',
-                }
             }
         },
         methods: {
@@ -108,11 +103,10 @@
             },
             searchArticle() {
                 let _this = this;
-                this.postRequest("/article/title", {
-                    title: this.articleToSearch.title
-                }).then(resp => {
+                let usr_base = '/search/name';
+                this.getRequest(usr_base + '?name=' + this.articleToSearch.title).then(resp => {
                     if (resp && resp.status === 200) {
-                        _this.loadValues();
+                        _this.loadArticles();
                     }
                 });
             },
@@ -125,22 +119,9 @@
                     }
                 })
             },
-            onEditClicked(index) {
-                this.form.id = this.values[index].id;
-                this.form.name = this.values[index].name;
-                this.form.explanation = this.values[index].explanation;
-                this.dialogFormVisible = true;
-            },
+
             addArticle() {
-                let _this = this;
-                this.postRequest("/value/add", {
-                    name: this.newValue.name,
-                    explanation: this.newValue.explanation
-                }).then(resp => {
-                    if (resp && resp.status === 200) {
-                        _this.loadValues();
-                    }
-                });
+
             }
         },
         mounted: function () {
