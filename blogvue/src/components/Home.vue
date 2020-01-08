@@ -50,6 +50,9 @@
             <template v-for="(item,index) in values">
                 <span class="footer_value_item" :key="index">{{item.name}}</span>
             </template>
+            <div style="margin-left: 30px">
+                <a class="footer_value_title" href="/about_us" style="color: #FFFFFF;cursor: pointer">关于我们</a>
+            </div>
         </el-footer>
     </el-container>
 </template>

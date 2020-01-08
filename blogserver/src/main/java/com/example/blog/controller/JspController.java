@@ -15,10 +15,14 @@ public class JspController {
         return "myJsp";
     }
 
+    @GetMapping("about_us")
+    public String about(Model model) {
+        return "about";
+    }
+
     @GetMapping("/thymeleaf")
     public String thymeleaf(Model model){
         model.addAttribute("msg","测试thymeleaf页面！！！");
         return "html/myThymeleaf";
     }
-
 }
