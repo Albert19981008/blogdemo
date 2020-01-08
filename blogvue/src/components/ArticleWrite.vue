@@ -16,7 +16,7 @@
         <el-form-item label="文章正文:" :label-width="formLabelWidth">
             <el-input
                     type="textarea"
-                    :rows="20"
+                    :rows="15"
                     style="margin-top: 20px"
                     placeholder="请输入内容"
                     v-model="form.content">
@@ -63,12 +63,24 @@
                 this.getRequest("/topic/all").then(resp => {
                     if (resp && resp.status === 200) {
                         _this.topicsAll = resp.data;
-                        window.console.log(_this.topicsAll);
                     }
                 });
             },
             doAddArticle() {
-
+                let _this = this;
+                this.postRequest("/article/add", {
+                    "topicName": this.form.topic,
+                    "userId": this.$store.state.user.id,
+                    "articleText": this.form.content,
+                    "title": this.form.title
+                }).then(resp => {
+                    if (resp && resp.status === 200) {
+                        _this.$message({type: 'success', message: '发表成功'});
+                        this.$router.push({path: '/home'});
+                    } else {
+                        _this.$message({type: 'error', message: '失败，请检查参数信息'});
+                    }
+                })
             }
         },
         mounted: function () {

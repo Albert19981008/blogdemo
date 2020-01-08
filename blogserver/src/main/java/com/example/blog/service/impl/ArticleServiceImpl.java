@@ -38,7 +38,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article getArticleById(int id) {
-        Article article =  articleDao.getArticleById(id);
+        Article article = articleDao.getArticleById(id);
         Topic topic = topicDao.getTopicById(article.getTopicId());
         User user = userDao.getUserById(article.getUserId());
         article.setTopicName(topic.getName());
@@ -50,7 +50,13 @@ public class ArticleServiceImpl implements ArticleService {
     public boolean addArticle(Article article) {
         try {
             int id = articleDao.getMaxId() + 1;
+            if (article.getUserId() < 0 || topicDao.getTopicByName(article.getTopicName()) == null) {
+                return false;
+            }
             article.setArticleId(id);
+            int topicId = topicDao.getTopicByName(article.getTopicName()).getId();
+            article.setTopicId(topicId);
+            System.out.println(article);
             articleDao.addArticle(article);
             return true;
         } catch (Exception e) {

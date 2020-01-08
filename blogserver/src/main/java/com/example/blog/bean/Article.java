@@ -72,4 +72,17 @@ public class Article implements Serializable {
     public void setTopicName(String topicName) {
         this.topicName = topicName;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "articleId=" + articleId +
+                ", userId=" + userId +
+                ", topicId=" + topicId +
+                ", title='" + title + '\'' +
+                ", articleText='" + articleText + '\'' +
+                ", userName='" + userName + '\'' +
+                ", topicName='" + topicName + '\'' +
+                '}';
+    }
 }

@@ -15,6 +15,9 @@ public interface TopicDao {
     @Select("select * from topic where id = #{id}")
     Topic getTopicById(Integer id);
 
+    @Select("select * from topic where name = #{name}")
+    Topic getTopicByName(String name);
+
     @Select("select max(id) from topic")
     int getMaxId();
 

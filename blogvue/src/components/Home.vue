@@ -76,7 +76,7 @@
                 this.$router.push(path);
             },
             init() {
-                window.console.log(this.$store.state.user.role);
+                window.console.log(this.$store.state.user.id);
                 this.if_is_root = this.$store.state.user.role === 'root';
             },
             log_out() {
