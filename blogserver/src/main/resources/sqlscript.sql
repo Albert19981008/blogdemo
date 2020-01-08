@@ -62,4 +62,4 @@ create table `article`
 );
 
 insert into `article`
-values (1, 1, 2, 'test_article', 'test_article');
+values (1, 1, 2, 'test_article_title', 'test_article_text');
