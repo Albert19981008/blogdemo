@@ -1,6 +1,7 @@
+drop database if exists `blogdemo`;
 create database `blogdemo` default character set utf8;
 
-USE `blogdemo`;
+use `blogdemo`;
 
 drop table if exists `value_table`;
 create table `value_table`
