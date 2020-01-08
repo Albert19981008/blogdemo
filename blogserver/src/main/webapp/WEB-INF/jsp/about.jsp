@@ -23,9 +23,13 @@
 
         </header>
         <section data-v-077fc1de="" class="el-container">
-            <div class="main" >
+            <div class="main">
                 <h3>现在的时间是</h3>
                 <h3>${time1}</h3>
+                <h4>${msg1}</h4>
+                <h4>${msg2}</h4>
+                <h4>${msg3}</h4>
+                <h4>${msg4}</h4>
             </div>
 
         </section>
@@ -36,18 +40,18 @@
 <script src="../../css/app.86fc6576.js"></script>
 </body>
 <style>
-    .main{
-    text-align: center; /*让div内部文字居中*/
-    background-color: #fff;
-    border-radius: 20px;
-    width: 300px;
-    height: 350px;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    .main {
+        text-align: center; /*让div内部文字居中*/
+        background-color: #fff;
+        border-radius: 20px;
+        width: 300px;
+        height: 350px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
 </style>
 </html>

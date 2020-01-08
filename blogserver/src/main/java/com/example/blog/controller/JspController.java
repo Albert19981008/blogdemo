@@ -24,6 +24,14 @@ public class JspController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateNowStr = sdf.format(d);
         model.addAttribute("time1", dateNowStr);
+        String msg1 = "欢迎使用李昕旸和刘洋凡做的博客项目";
+        String msg2 = "本项目后端主要技术栈为 spring boot mybatis";
+        String msg3 = "本项目前端主要技术栈为 vue + 少量jsp";
+        String msg4 = "如果有问题请联系 741162208@qq.com";
+        model.addAttribute("msg1", msg1);
+        model.addAttribute("msg2", msg2);
+        model.addAttribute("msg3", msg3);
+        model.addAttribute("msg4", msg4);
         return "about";
     }
 
